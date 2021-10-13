@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  color: #495057;
+}
+.wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+table {
+  width: 100%;
+  border: 1px solid #dee2e6;
+  border-radius: 0.3rem;
+  padding: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+table th {
+  font-size: 1.4rem;
+}
+.new-user {
+  background-color: #3ac47d;
+  color: #fff;
+  font-size: 1.4rem;
+  border: none;
+  outline: none;
+  border-radius: 0.3rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+table td {
+  padding: 0.8rem;
+}
+table tbody {
+  text-align: center;
+}
+.id,
+.avatar {
+  width: 80px;
+}
+.avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  object-fit: cover;
+}
+.actions .fas {
+  width: 15px;
+  height: 15px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+.fa-user-edit {
+  color: #f7b924;
+}
+.fa-trash {
+  color: #d92550;
+}
+/* form */
+#form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #dee2e6;
+  border-radius: 0.3rem;
+  padding: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+}
+#form.active {
+  opacity: 1;
+  visibility: visible;
+}
+#form input {
+  padding: 0.8rem 1rem;
+  border: 1px solid #dee2e6;
+  outline: none;
+  border-radius: inherit;
+  margin-bottom: 1rem;
+}
+.group-btn {
+  margin-top: 2rem;
+}
+.group-btn button {
+  padding: 0.8rem 1rem;
+  border-radius: 0.3rem;
+  border: none;
+  outline: none;
+  color: #fff;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+.group-btn .add {
+  background-color: #3ac47d;
+}
+.group-btn .save {
+  background-color: #f7b924;
+}
+.group-btn .cancel {
+  background-color: #d92550;
+}

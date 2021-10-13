@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUDS PAGE</title>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- icon -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+    <!-- css -->
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <button class="new-user">Add</button>
+      <!-- Form -->
+      <div id="form">
+        <label for="name">Name</label>
+        <input type="text" id="input-name" required />
+        <label for="name">Avatar</label>
+        <input type="text" id="input-avatar" required />
+        <label for="name">Website</label>
+        <input type="text" id="input-website" required />
+        <label for="name">Company Name</label>
+        <input type="text" id="input-company-name" required />
+        <label for="name">Company Address</label>
+        <input type="text" id="input-company-address" required />
+        <div class="group-btn">
+          <button class="add">Create</button>
+          <button class="save">Save</button>
+          <button class="cancel">Cancel</button>
+        </div>
+      </div>
+      <!-- Table -->
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Avatar</th>
+            <th>Website</th>
+            <th>Company Name</th>
+            <th>Company Address</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody class="list-user">
+          <!-- <tr>
+            <td class="item id">1</td>
+            <td class="item name">Darrell Kris</td>
+            <td class="item">
+              <img class="avatar" src="http://lorempixel.com/640/480/abstract" alt="" />
+            </td>
+            <td class="item website">jasen.name</td>
+            <td class="item company-name">Fabbi</td>
+            <td class="item company-address">Nguyen Phong Sac</td>
+            <td class="item actions">
+              <div class="fas fa-user-edit"></div>
+              <div class="fas fa-trash"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="item id">2</td>
+            <td class="item name">Darrell Kris</td>
+            <td class="item avatar">
+              <img src="http://lorempixel.com/640/480/abstract" alt="" />
+            </td>
+            <td class="item website">jasen.name</td>
+            <td class="item company-name">Fabbi</td>
+            <td class="item company-address">Nguyen Phong Sac</td>
+            <td class="item actions">
+              <div class="fas fa-user-edit"></div>
+              <div class="fas fa-trash"></div>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
