@@ -18,6 +18,8 @@ const companyNameValue = document.querySelector("#input-company-name");
 const companyAddressValue = document.querySelector("#input-company-address");
 // Show Form
 newUser.addEventListener("click", () => {
+  add.style.display = "inline-block";
+  save.style.display = "none";
   form.classList.toggle("active");
 });
 cancel.addEventListener("click", () => {
@@ -47,14 +49,16 @@ const renderUsers = (users) => {
       </tr>
     `;
   });
-  listUser.innerHTML += htmls.join("");
+  listUser.innerHTML = htmls.join("");
 };
 const url = "https://5fa3d0d9f10026001618df85.mockapi.io/users";
+let usersArr = [];
 // Method: GET
 const getUsers = async () => {
   let res = await fetch(url);
   let users = await res.json();
-  renderUsers(users);
+  usersArr = [...users];
+  renderUsers(usersArr);
   listUser.addEventListener("click", (e) => {
     let editClicked = e.target.id == "edit-user";
     let deleteClicked = e.target.id == "delete-user";
@@ -65,12 +69,17 @@ const getUsers = async () => {
       if (question === true) {
         fetch(`${url}/${id}`, { method: "DELETE" })
           .then((res) => res.json())
-          .then(() => location.reload());
+          .then((data) => {
+            let index = usersArr.findIndex((user) => user.id === data.id);
+            usersArr.splice(index, 1);
+            renderUsers(usersArr);
+          });
       }
     }
     // Method: PUT
     if (editClicked) {
-      add.setAttribute("disabled", "disabled");
+      add.style.display = "none";
+      save.style.display = "inline-block";
       form.classList.toggle("active");
       const parent = e.target.parentElement.parentElement;
       let nameContent = parent.querySelector(".name").textContent;
@@ -104,44 +113,45 @@ const getUsers = async () => {
           }),
         })
           .then((res) => res.json())
-          .then(() => location.reload());
+          .then((data) => {
+            let index = usersArr.findIndex((user) => user.id === data.id);
+            usersArr.splice(index, 1, data);
+            form.classList.remove("active");
+            renderUsers(usersArr);
+          });
       });
     }
   });
 };
 getUsers();
-// Method: POST
-const postUsers = () => {
-  add.addEventListener("click", () => {
-    save.setAttribute("disabled", "disabled");
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+// Method: POST;
+add.addEventListener("click", () => {
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: nameValue.value,
+      avatar: avatarValue.value,
+      website: websiteValue.value,
+      company: {
+        name: companyNameValue.value,
+        adress: companyAddressValue.value,
       },
-      body: JSON.stringify({
-        name: nameValue.value,
-        avatar: avatarValue.value,
-        website: websiteValue.value,
-        company: {
-          name: companyNameValue.value,
-          adress: companyAddressValue.value,
-        },
-      }),
-    })
-      .then((res) => res.json())
-      .then((users) => {
-        const usersArr = [];
-        usersArr.push(users);
-        renderUsers(usersArr);
-      });
-    //
-    form.classList.remove("active");
-    nameValue.value = "";
-    avatarValue.value = "";
-    websiteValue.value = "";
-    companyNameValue.value = "";
-    companyAddressValue.value = "";
-  });
-};
-postUsers();
+    }),
+  })
+    .then((res) => res.json())
+    .then((users) => {
+      usersArr.unshift(users);
+      renderUsers(usersArr);
+      swal("Good job!", "success");
+    });
+  //
+  form.classList.remove("active");
+  nameValue.value = "";
+  avatarValue.value = "";
+  websiteValue.value = "";
+  companyNameValue.value = "";
+  companyAddressValue.value = "";
+});
