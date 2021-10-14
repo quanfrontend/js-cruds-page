@@ -21,6 +21,11 @@ newUser.addEventListener("click", () => {
   add.style.display = "inline-block";
   save.style.display = "none";
   form.classList.toggle("active");
+  nameValue.value = "";
+  avatarValue.value = "";
+  websiteValue.value = "";
+  companyNameValue.value = "";
+  companyAddressValue.value = "";
 });
 cancel.addEventListener("click", () => {
   form.classList.remove("active");
@@ -116,8 +121,8 @@ const getUsers = async () => {
           .then((data) => {
             let index = usersArr.findIndex((user) => user.id === data.id);
             usersArr.splice(index, 1, data);
-            form.classList.remove("active");
             renderUsers(usersArr);
+            form.classList.remove("active");
           });
       });
     }
@@ -146,6 +151,9 @@ add.addEventListener("click", () => {
       usersArr.unshift(users);
       renderUsers(usersArr);
       swal("Good job!", "success");
+    })
+    .catch((err) => {
+      console.log(err);
     });
   //
   form.classList.remove("active");
